@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication2.Models.UsuarioModel>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Criar Usuário", "AdicionaUsuario")
+</p>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.nome)</th>
+        <th>@Html.DisplayNameFor(model => model.sobrenome)</th>
+        <th>@Html.DisplayNameFor(model => model.endereco)</th>
+        <th>@Html.DisplayNameFor(model => model.email)</th>
+        <th>@Html.DisplayNameFor(model => model.nascimento)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="width: 150px;">@Html.DisplayFor(modelItem => item.nome)</td>
+            <td style="width: 150px;">@Html.DisplayFor(modelItem => item.sobrenome)</td>
+            <td style="width: 150px;">@Html.DisplayFor(modelItem => item.endereco)</td>
+            <td style="width: 200px;">@Html.DisplayFor(modelItem => item.email)</td>
+            <td style="width: 150px;">@Html.DisplayFor(modelItem => item.nascimento)</td>
+            <td>
+                @Html.ActionLink("Editar", "EditaUsuario", new { id = item.id }) |
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Deletar", "DeletaUsuario", new { id = item.id, item })
+            </td>
+        </tr>
+    }
+</table>
